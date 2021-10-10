@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="currency"
+            type="uz.pdp.exchangerates.database.entities.Currency" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#1A000000"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{TextUtils.substring(currency.date,0,TextUtils.indexOf(currency.date,' ')+1)}"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/date_clock"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/guide_33"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/date_clock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{TextUtils.substring(currency.date,TextUtils.indexOf(currency.date,' ')+1,currency.date.length())}"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/guide_33"
+            app:layout_constraintTop_toBottomOf="@id/date" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.33" />
+
+
+        <TextView
+            android:id="@+id/sell_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sotilishi"
+            android:textColor="#808080"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/sell"
+            app:layout_constraintLeft_toRightOf="@id/guide_33"
+            app:layout_constraintRight_toLeftOf="@id/guide_66"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/sell"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{currency.nbu_cell_price}"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/guide_33"
+            app:layout_constraintRight_toLeftOf="@id/guide_66"
+            app:layout_constraintTop_toBottomOf="@id/sell_title" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_66"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.66" />
+
+        <TextView
+            android:id="@+id/buy_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Olinishi"
+            android:textColor="#808080"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/buy"
+            app:layout_constraintLeft_toRightOf="@id/guide_66"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/buy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{currency.nbu_buy_price}"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/guide_66"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buy_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
