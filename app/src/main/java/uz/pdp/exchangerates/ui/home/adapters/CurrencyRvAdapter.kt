@@ -9,9 +9,9 @@ import uz.pdp.exchangerates.databinding.ItemCurrency2Binding
 class CurrencyRvAdapter() :
     RecyclerView.Adapter<CurrencyRvAdapter.VH>() {
 
-    private lateinit var data: ArrayList<Currency>
+    private lateinit var data: List<Currency>
 
-    fun setAdapter(data: ArrayList<Currency>) {
+    fun setAdapter(data: List<Currency>) {
         this.data = data
     }
 

@@ -22,6 +22,7 @@
             android:layout_height="40dp"
             android:layout_margin="20dp"
             android:pointerIcon="arrow"
+            android:visibility="invisible"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_spinner" />
@@ -35,6 +36,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/dollar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -43,6 +45,7 @@
                 android:text="$"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -55,6 +58,7 @@
                 android:inputType="number"
                 android:paddingStart="25dp"
                 android:textColorHint="#4D000000"
+                android:visibility="invisible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,6 +71,18 @@
             android:background="@drawable/exchange_back"
             android:padding="15dp"
             android:src="@drawable/ic_exchange"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/guide_50"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guide_50" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:elevation="10dp"
             app:layout_constraintBottom_toBottomOf="@id/guide_50"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -100,6 +116,7 @@
             android:layout_height="40dp"
             android:layout_margin="20dp"
             android:pointerIcon="arrow"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guide_50"
@@ -111,16 +128,19 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="20dp"
-            android:maxLines="11"
-            android:text="10 530"
+            android:maxLength="11"
+            android:maxLines="1"
+            android:text="0"
             android:textColor="@android:color/black"
             android:textSize="26sp"
             android:textStyle="bold"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="@id/guide_50_vertical" />
 
         <TextView
+            android:id="@+id/buy_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -128,6 +148,7 @@
             android:text="Sotib olish"
             android:textColor="#80000000"
             android:textSize="14sp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@id/sell"
             app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -137,16 +158,19 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="20dp"
-            android:maxLines="11"
-            android:text="10 530"
+            android:maxLength="11"
+            android:maxLines="1"
+            android:text="0"
             android:textColor="@android:color/black"
             android:textSize="26sp"
             android:textStyle="bold"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/guide_50_vertical"
             app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
+            android:id="@+id/sell_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -154,6 +178,7 @@
             android:text="Sotish"
             android:textColor="#80000000"
             android:textSize="14sp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@id/buy"
             app:layout_constraintLeft_toLeftOf="@id/guide_50_vertical" />
 

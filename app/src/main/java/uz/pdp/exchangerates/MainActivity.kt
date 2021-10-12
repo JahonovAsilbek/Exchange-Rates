@@ -1,5 +1,6 @@
 package uz.pdp.exchangerates
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -41,8 +42,15 @@ class MainActivity : AppCompatActivity(), CurrencyFragment.OnDataPass {
         navView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.share -> {
-                    Toast.makeText(this@MainActivity, "Share!", Toast.LENGTH_SHORT).show()
                     drawerLayout.closeDrawers()
+                    val shareIntent = Intent()
+                    shareIntent.action = Intent.ACTION_SEND
+                    shareIntent.type = "text/plain"
+                    shareIntent.putExtra(
+                        Intent.EXTRA_TEXT,
+                        "https://github.com/JahonovAsilbek/Exchange-Rates"
+                    )
+                    startActivity(Intent.createChooser(shareIntent, "Share to"))
                 }
                 R.id.info -> {
                     Toast.makeText(this@MainActivity, "Info!", Toast.LENGTH_SHORT).show()

@@ -54,15 +54,14 @@ class CurrencyFragment : Fragment() {
     private fun loadData() {
         data = ArrayList()
         currencyViewModel.getCurrency().observe(viewLifecycleOwner, {
-            adapter = CurrencyAdapter()
-            data.addAll(it)
-            adapter.setAdapter(it as ArrayList, object : CurrencyAdapter.OnItemClick {
+            adapter = CurrencyAdapter(it, object : CurrencyAdapter.OnItemClick {
                 override fun onCLick(currency: Currency) {
                     onDataPass.onDataPass("calculator")
                     Toast.makeText(binding.root.context, currency.code, Toast.LENGTH_SHORT).show()
                     Log.d("AAAA", "onCLick: ${currency.code}")
                 }
             })
+            data.addAll(it)
             binding.rv.adapter = adapter
             binding.progress.visibility = View.INVISIBLE
         })

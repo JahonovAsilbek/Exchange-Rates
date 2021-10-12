@@ -1,136 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="10dp"
+    android:clickable="true"
+    app:cardCornerRadius="20dp">
 
-    <data>
-
-        <import type="android.text.TextUtils" />
-
-        <variable
-            name="currency"
-            type="uz.pdp.exchangerates.database.entities.Currency" />
-
-        <variable
-            name="handler"
-            type="uz.pdp.exchangerates.ui.currency.MyHandler" />
-
-        <variable
-            name="url"
-            type="String" />
-    </data>
-
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        app:cardCornerRadius="20dp">
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackgroundBorderless"
+        android:padding="20dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?selectableItemBackgroundBorderless"
-            android:padding="20dp">
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:url="@{url}" />
+        <TextView
+            android:id="@+id/code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/image"
+            app:layout_constraintLeft_toRightOf="@id/image"
+            app:layout_constraintTop_toTopOf="@id/image" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="@{currency.code}"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/image"
-                app:layout_constraintLeft_toRightOf="@id/image"
-                app:layout_constraintTop_toTopOf="@id/image" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_60"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guide_60"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.5" />
+        <TextView
+            android:id="@+id/buy_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Sotib olish"
+            android:textColor="#99000000"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@id/guide_45"
+            app:layout_constraintTop_toTopOf="@id/guide_60" />
 
-            <TextView
-                android:id="@+id/buy_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Sotib olish"
-                android:textColor="#99000000"
-                android:textSize="16sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="@id/guide_45"
-                app:layout_constraintTop_toTopOf="@id/guide_60" />
+        <TextView
+            android:id="@+id/buy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@id/guide_45"
+            app:layout_constraintTop_toBottomOf="@id/buy_title" />
 
-            <TextView
-                android:id="@+id/buy"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:text="@{TextUtils.isEmpty(currency.nbu_buy_price)==false?currency.nbu_buy_price:currency.cb_price}"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="@id/guide_45"
-                app:layout_constraintTop_toBottomOf="@id/buy_title" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.45" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guide_45"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.45" />
+        <TextView
+            android:id="@+id/sell_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sotish"
+            android:textColor="#99000000"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@id/guide_45"
+            app:layout_constraintTop_toTopOf="@id/guide_60" />
 
-            <TextView
-                android:id="@+id/sell_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sotish"
-                android:textColor="#99000000"
-                android:textSize="16sp"
-                app:layout_constraintLeft_toLeftOf="@id/guide_45"
-                app:layout_constraintTop_toTopOf="@id/guide_60" />
+        <TextView
+            android:id="@+id/sell"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/guide_45"
+            app:layout_constraintTop_toBottomOf="@id/sell_title" />
 
-            <TextView
-                android:id="@+id/sell"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="@{TextUtils.isEmpty(currency.nbu_cell_price)==false?currency.nbu_cell_price:currency.cb_price}"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="@id/guide_45"
-                app:layout_constraintTop_toBottomOf="@id/sell_title" />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/calculator"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/calculator_back1"
+            android:padding="15dp"
+            android:src="@drawable/ic_calculator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guide_60" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/calculator"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/calculator_back1"
-                android:onClick="@{handler::calculatorClick}"
-                android:padding="15dp"
-                android:src="@drawable/ic_calculator"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/guide_60" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-</layout>
+</androidx.cardview.widget.CardView>

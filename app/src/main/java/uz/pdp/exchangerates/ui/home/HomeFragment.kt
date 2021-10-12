@@ -58,6 +58,7 @@ class HomeFragment : Fragment() {
 
         currencyViewModel.getCurrency().observe(viewLifecycleOwner, {
             binding.progress.visibility = View.INVISIBLE
+            binding.text.visibility = View.VISIBLE
             for (currency in it) {
                 if (getDao.getCurrencyByDate(currency.date!!, currency.code!!).isEmpty()) {
                     getDao.insertCurency(currency)
@@ -86,12 +87,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun rvAdapter(currency: Currency) {
-        currencyRvAdapter.setAdapter(
-            getDao.getCurrencyByDate(
-                currency.date!!,
-                currency.code!!
-            ) as ArrayList
-        )
+        val data = getDao.getCurrencyByDateRv(
+            currency.date!!,
+            currency.code!!
+        ).reversed()
+        currencyRvAdapter.setAdapter(data)
         currencyRvAdapter.notifyDataSetChanged()
         binding.rv.adapter = currencyRvAdapter
     }
