@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-        
+
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
