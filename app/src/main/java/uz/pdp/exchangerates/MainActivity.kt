@@ -10,10 +10,8 @@ import androidx.navigation.ui.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import uz.pdp.exchangerates.databinding.ActivityMainBinding
-import uz.pdp.exchangerates.ui.currency.CurrencyFragment
 
-
-class MainActivity : AppCompatActivity(), CurrencyFragment.OnDataPass {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -59,9 +57,7 @@ class MainActivity : AppCompatActivity(), CurrencyFragment.OnDataPass {
             }
             true
         }
-
-
-
+        
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
@@ -70,11 +66,5 @@ class MainActivity : AppCompatActivity(), CurrencyFragment.OnDataPass {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
-
-    override fun onDataPass(data: String) {
-        if (data == "calculator") {
-            binding.bottomNavigation.selectedItemId = R.id.nav_slideshow
-        }
     }
 }

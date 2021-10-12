@@ -46,9 +46,6 @@ class HomeFragment : Fragment() {
 
         loadData()
 
-
-
-
         return binding.root
     }
 
@@ -70,17 +67,20 @@ class HomeFragment : Fragment() {
             binding.tabLayout.setupWithViewPager(binding.vpCard)
             binding.tabLayout2.setupWithViewPager(binding.vpCard)
             setTabs()
-
+            rvAdapter(it[0])
             binding.vpCard.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrolled(
                     position: Int,
                     positionOffset: Float,
                     positionOffsetPixels: Int
                 ) {
+
+                }
+
+                override fun onPageSelected(position: Int) {
                     rvAdapter(it[position])
                 }
 
-                override fun onPageSelected(position: Int) {}
                 override fun onPageScrollStateChanged(state: Int) {}
             })
         })

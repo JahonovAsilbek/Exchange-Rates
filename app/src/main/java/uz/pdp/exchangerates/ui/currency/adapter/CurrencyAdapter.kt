@@ -13,7 +13,7 @@ class CurrencyAdapter(var data: List<Currency>, var onItemClick: OnItemClick) :
     inner class VH(var itemCurrencyBinding: ItemCurrencyBinding) :
         RecyclerView.ViewHolder(itemCurrencyBinding.root) {
 
-        fun onBind(currency: Currency, onItemClick: OnItemClick) {
+        fun onBind(currency: Currency,position: Int) {
 
             Picasso.get()
                 .load("https://nbu.uz/local/templates/nbu/images/flags/${currency.code}.png")
@@ -29,7 +29,7 @@ class CurrencyAdapter(var data: List<Currency>, var onItemClick: OnItemClick) :
             itemCurrencyBinding.code.text = currency.code
 
             itemView.setOnClickListener {
-                onItemClick.onCLick(currency)
+                onItemClick.onCLick(currency,position)
             }
         }
     }
@@ -39,7 +39,7 @@ class CurrencyAdapter(var data: List<Currency>, var onItemClick: OnItemClick) :
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        holder.onBind(data[position], onItemClick)
+        holder.onBind(data[position],position)
     }
 
     override fun getItemCount(): Int = data.size
@@ -50,6 +50,6 @@ class CurrencyAdapter(var data: List<Currency>, var onItemClick: OnItemClick) :
     }
 
     interface OnItemClick {
-        fun onCLick(currency: Currency)
+        fun onCLick(currency: Currency,position: Int)
     }
 }

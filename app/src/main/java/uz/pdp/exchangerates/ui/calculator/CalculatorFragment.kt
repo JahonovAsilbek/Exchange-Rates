@@ -23,10 +23,14 @@ class CalculatorFragment : Fragment() {
     lateinit var data: ArrayList<Currency>
     lateinit var spinnerAdapter1: SpinnerAdapter
     lateinit var spinnerAdapter2: SpinnerAdapter
+    private var position: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = "Pro Valyuta kurslari"
+        arguments?.let {
+            position = it.getInt("position")
+        }
     }
 
     override fun onCreateView(
@@ -58,7 +62,9 @@ class CalculatorFragment : Fragment() {
             spinnerAdapter2 = SpinnerAdapter(data)
             binding.spinner1.adapter = spinnerAdapter1
             binding.spinner2.adapter = spinnerAdapter2
-            binding.spinner1.setSelection(1)
+            if (position != -1) {
+                binding.spinner1.setSelection(position + 1)
+            }else binding.spinner1.setSelection(1)
 
             var nominal1_buy = 0.0
             var nominal1_cell = 0.0
